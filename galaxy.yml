@@ -1,0 +1,24 @@
+---
+# Copyright (c) Stanislav Romanov
+# GNU General Public License v3.0+
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+namespace: zaeb
+name: auth
+version: 1.0.0
+readme: README.md
+authors:
+  - Stanislav Romanov
+description: The zaeb.auth collection includes plugins for password managers
+license:
+  - GPL-3.0-or-later
+tags:
+  - lookup
+  - plugin
+  - passwordstate
+dependencies: {}
+repository: https://github.com/zaeb/ansible-zaeb-auth
+documentation: https://github.com/zaeb/ansible-zaeb-auth
+homepage: https://github.com/zaeb/ansible-zaeb-auth
+issues: https://github.com/zaeb/ansible-zaeb-auth/issues
+build_ignore: []
