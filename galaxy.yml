@@ -5,7 +5,7 @@
 
 namespace: zaeb
 name: auth
-version: 1.0.0
+version: 2.0.0
 readme: README.md
 authors:
   - Stanislav Romanov
@@ -16,6 +16,7 @@ tags:
   - lookup
   - plugin
   - passwordstate
+  - keepass
 dependencies: {}
 repository: https://github.com/zaeb/ansible-zaeb-auth
 documentation: https://github.com/zaeb/ansible-zaeb-auth
