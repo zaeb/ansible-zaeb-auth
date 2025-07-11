@@ -87,6 +87,7 @@ _raw:
 """
 
 import os
+import uuid
 
 from ansible.errors import AnsibleError, AnsibleFileNotFound
 from ansible.plugins.lookup import LookupBase
@@ -346,7 +347,9 @@ class LookupModule(LookupBase):
                 display.vvvv(f"Limiting search to group UUID: {group_uuid}")
 
                 try:
-                    search_group = kp.find_groups(uuid=group_uuid, first=True)
+                    # Convert string UUID to uuid.UUID object
+                    group_uuid_obj = uuid.UUID(group_uuid)
+                    search_group = kp.find_groups(uuid=group_uuid_obj, first=True)
                     if not search_group:
                         raise AnsibleError(
                             f"Group with UUID '{group_uuid}' not found in KeePass database"
@@ -362,15 +365,18 @@ class LookupModule(LookupBase):
 
             # Search for entry by UUID
             try:
+                # Convert string UUID to uuid.UUID object
+                entry_uuid_obj = uuid.UUID(entry_uuid)
+
                 if search_group:
                     # Search within specific group (non-recursive as per requirements)
                     entry = kp.find_entries(
-                        uuid=entry_uuid, group=search_group, recursive=False, first=True
+                        uuid=entry_uuid_obj, group=search_group, recursive=False, first=True
                     )
                 else:
                     # Search in root of database only (non-recursive as per requirements)
                     entry = kp.find_entries(
-                        uuid=entry_uuid,
+                        uuid=entry_uuid_obj,
                         group=kp.root_group,
                         recursive=False,
                         first=True,
